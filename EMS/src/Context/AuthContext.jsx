@@ -1,6 +1,8 @@
-const Auth = () => {
+const Auth = ({children}) => {
   return (
-    <div>Auth</div>
+    <div>
+      {children}
+    </div>
   )
 }
 
