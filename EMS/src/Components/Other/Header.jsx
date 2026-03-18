@@ -1,5 +1,4 @@
 import React from 'react'
-
 const Header = () => {
   return (
     <div className='text-white flex  items-end justify-between '>

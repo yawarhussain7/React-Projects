@@ -219,9 +219,15 @@ export const setLocalStorage = ()=>{
 localStorage.setItem("employees",JSON.stringify(employees))
 localStorage.setItem("admin",JSON.stringify(admin))
 }
+
 export const getLocalStorage = ()=>{
-const employeeData = JSON.parse(localStorage.getItem("employees"))
-console.log(employeeData)
-const adminData = localStorage.getItem("admin")
-console.log(JSON.parse(adminData))
+const employeesData = JSON.parse(localStorage.getItem("employees"))
+console.log(employeesData)
+const adminData = JSON.parse(localStorage.getItem("admin"))
+console.log(adminData)
+
+return {
+    employeesData,
+    adminData
+}
 }

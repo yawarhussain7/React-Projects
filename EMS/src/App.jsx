@@ -1,21 +1,22 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Login from "./Components/Auth/Login"
 import AdminDashboard from "./Components/Dashboard/AdminDashboard"
 import EmployeeDashboard from "./Components/Dashboard/EmployeeDashboard"
 import { getLocalStorage, setLocalStorage } from "./Utils/localStorage"
+import { AuthContext } from "./Context/AuthProvider"
 const App = () => {
 
   const [user,setUser]= useState(null)
-  // useEffect(()=>{
-  //   setLocalStorage()
-  //   getLocalStorage()
-  // })
- 
+  useEffect(()=>{
+    setLocalStorage()
+    getLocalStorage()
+  },[])
+
   const handleLogin = (email,password)=>{
-  if(email == "admin@gmail.com" && password == "123"){
+  if(AuthData && AuthData?.adminData?.find((a)=>email == a.email && password == a.password)){
     console.log("admin")    
     setUser("admin")
-  }else if(email == 'user@gmail.com' && password == '123'){
+  }else if(AuthData && AuthData?.employeesData.find((e)=> email == e.email && password == e.password)){
     console.log("user")
     setUser("employee")
   }else{
@@ -23,6 +24,9 @@ const App = () => {
   }
 
 }
+    const AuthData = useContext(AuthContext)
+  console.log('AuthData from context',AuthData)
+
 
   return (
     <>
